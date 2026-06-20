@@ -36,6 +36,9 @@ STRINGS = {
         "expert": "expert",
         "novice": "novice",
         "beginner": "beginner",
+        "easy": "easy",
+        "normal": "normal",
+        "hard": "hard",
     },
     "zh": {
         "title": "单词方阵",
@@ -72,6 +75,9 @@ STRINGS = {
         "expert": "专家",
         "novice": "新手",
         "beginner": "入门",
+        "easy": "简单",
+        "normal": "普通",
+        "hard": "困难",
     },
 }
 

@@ -34,7 +34,7 @@ def show_scores(settings):
     if not scores:
         _print(t(settings["lang"], "no_scores"))
     for idx, item in enumerate(scores, 1):
-        _print(f"{idx}. {item.get('name', '?')} {item.get('score', 0)} ({item.get('difficulty', '?')})")
+        _print(f"{idx}. {item.get('name', '?')} {item.get('score', 0)} ({t(settings['lang'], item.get('difficulty', '?'))})")
     input(t(settings["lang"], "press_enter"))
 
 
@@ -45,7 +45,7 @@ def settings_menu(settings):
         _print(f"{t(settings['lang'], 'lang')}: {settings['lang']}")
         _print(f"{t(settings['lang'], 'sound')}: {t(settings['lang'], 'on' if settings['sound'] else 'off')}")
         _print(f"{t(settings['lang'], 'volume')}: {settings['volume']}")
-        _print(f"{t(settings['lang'], 'difficulty')}: {settings['difficulty']}")
+        _print(f"{t(settings['lang'], 'difficulty')}: {t(settings['lang'], settings['difficulty'])}")
         choice = input(t(settings["lang"], "settings_menu") + "\n" + t(settings["lang"], "choice")).strip().lower()
         if choice == "1":
             settings_mod.cycle_lang(settings)
@@ -92,6 +92,9 @@ def play_round(settings):
                 snd.incorrect()
             continue
         word = core.normalize_word(answer)
+        if not word:
+            _print(t(lang, "invalid"))
+            continue
         guesses_left -= 1
         if word in found:
             _print(t(lang, "duplicate"))
